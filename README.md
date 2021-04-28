@@ -12,7 +12,7 @@ below from that directory
 Optional arguments are WYZEVAC_PORT. You will need to use your email and
 password that you use with the Wyze app already. These will default to us, na,
 and 59354. 
-3. Run your newly created image: <code> # docker run -p 59354:59354 --name wyzevac-api -t wyzevac-api</code> (if you changed the port when you built your image, you should also change it here)
+3. Run your newly created image: <code> # docker run -d --restart unless-stopped -p 59354:59354 --name wyzevac-api -t wyzevac-api</code> (if you changed the port when you built your image, you should also change it here)
 4. That's it. If you need to troubleshoot your docker image, you can get into
 it via:
 <code> # docker exec -it wyzevac-api /bin/bash</code> or 
