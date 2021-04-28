@@ -1,8 +1,7 @@
 # Wyze Vacuum Simple REST API
 This REST API uses the [wyze-api](https://pypi.org/project/wyze-sdk/) python 3.9 library.
 
-I am not a Python programmer; this is really bad code. Please fix it. There is
-no authentication because the expectation is that you're running this on your
+There is no authentication because the expectation is that you're running this on your
 internal, trusted home network. You've been warned.
 
 # Installation (Docker)
