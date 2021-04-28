@@ -26,8 +26,8 @@
 # - "battery" returns a string representing percentage battery 
 #   remaining
 # 
-# - "mode" returns 1 if sweeping, 0 if charging, 5 if returning to charge, 4 іf
-# stuck and needs help
+# - "mode" returns 1 if sweeping, VacuumMode.IDLE if idle/charging, 
+#   5 if returning to charge, 4 іf stuck and needs help
 #
 # There is little error checking and no security here.
 # 
@@ -80,7 +80,7 @@ def sendCommand(device,command,command2):
 			my_rooms = command2.split(",")
 			client.vacuums.sweep_rooms(device_mac=device,room_ids=my_rooms)
 		elif (command == "clean"):
-			client.vacuums.clean(device_mac=device)
+			client.vacuums.clean(device_mac=device,device_model=vacuum.product.model)
 		if (command == "charge"):
 			client.vacuums.dock(device_mac=device,device_model=vacuum.product.model)	
 		if (command == "mode"):
@@ -88,7 +88,7 @@ def sendCommand(device,command,command2):
 		if (command == "battery"):
 			return(str(vacuum.voltage))
 		if (command == "pause"):
-			vacuum.pause()	
+			client.vacuums.pause(device_mac=device)	
 		if (command == "suction"):
 			if (command2 == "quiet"):
 			        client.vacuums.set_suction_level(device_mac=device,suction_level=VacuumSuctionLevel.QUIET,device_model=vacuum.product.model)	

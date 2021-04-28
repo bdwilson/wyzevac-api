@@ -19,6 +19,9 @@ it via:
 <code># docker run -it wyzevac-api /bin/bash</code> and then poke around and
 
 # Usage
+You'll need to get the IP address of your docker host, then navigate to:
+http://your.ip.address:59354/api/list - this should show you your device ID's
+on your account, then make subsequent calls with the device id.
 <pre>
 Usage: /api/[deviceid]/[clean|charge|pause|rooms|suction]
 
