@@ -38,8 +38,9 @@ Usage: /api/[deviceid]/[clean|charge|pause|rooms|suction]
 - "battery" returns a string representing percentage battery
    remaining
 
-- "mode" returns 1 if sweeping, 0 if charging, 5 if returning to charge, 4 іf
-   stuck and needs help
+- "mode" returns VacuumMode.SWEEPING if sweeping, VacuumMode.IDLE if idle/charging,
+   VacuumMode.ON_WAY_CHARGE if returning to charge, VacuumMode.PAUSE іf stuck
+   and needs help
 </pre>
 
 # Hubitat

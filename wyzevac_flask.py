@@ -8,10 +8,10 @@
 #
 # Set your email, password and port to run this service on.
 #
-# If you have more than one device on your account, you'll need to 
-# determine which device you want to control by using /api/list
+# You'll need to run /api/list to dermine which device you want to 
+# control, then use that Device ID to preface your commands
 #
-# Usage: /api/[deviceid]/[clean|charge|pause|rooms|suction]
+# Usage: /api/[deviceid]/[clean|charge|pause|rooms|suction]/[optional args]
 #
 # - /api/list will list you devices on your account.
 #
@@ -26,8 +26,9 @@
 # - "battery" returns a string representing percentage battery 
 #   remaining
 # 
-# - "mode" returns 1 if sweeping, VacuumMode.IDLE if idle/charging, 
-#   5 if returning to charge, 4 іf stuck and needs help
+# - "mode" returns VacuumMode.SWEEPING if sweeping, VacuumMode.IDLE if idle/charging, 
+#   VacuumMode.ON_WAY_CHARGE if returning to charge, VacuumMode.PAUSE іf stuck
+#   and needs help
 #
 # There is little error checking and no security here.
 # 
@@ -35,11 +36,8 @@ from flask import Flask, render_template, flash, request
 import os
 import unittest
 import logging
-#import smartbridge
-#from smartbridge.factory import ProviderFactory, ProviderList
 import uuid
 from http.client import HTTPConnection
-#from smartbridge.interfaces.devices import VacuumSuction
 from wyze_sdk import Client
 from wyze_sdk.models.devices import DeviceModels, Vacuum, VacuumSuctionLevel
 from wyze_sdk.errors import WyzeApiError
