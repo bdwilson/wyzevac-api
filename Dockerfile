@@ -10,7 +10,7 @@ WORKDIR /code
 
 RUN apt-get update -y && \
     apt-get install -y git && \
-    pip install flask wyze_sdk && \
+    pip install flask wyze_sdk==1.0.1 && \
 	git clone https://github.com/bdwilson/wyzevac-api && \
 	sed -i "s/WYZEVAC_USER/${WYZEVAC_USER}/" /code/wyzevac-api/wyzevac_flask.py && \
 	sed -i "s/WYZEVAC_PASS/${WYZEVAC_PASS}/" /code/wyzevac-api/wyzevac_flask.py && \
