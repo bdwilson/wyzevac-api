@@ -86,7 +86,7 @@ def sendCommand(device,command,command2):
 		if (command == "battery"):
 			return(str(vacuum.voltage))
 		if (command == "pause"):
-			client.vacuums.pause(device_mac=device)	
+			client.vacuums.pause(device_mac=device,device_model=vacuum.product.model)	
 		if (command == "suction"):
 			if (command2 == "quiet"):
 			        client.vacuums.set_suction_level(device_mac=device,suction_level=VacuumSuctionLevel.QUIET,device_model=vacuum.product.model)	
